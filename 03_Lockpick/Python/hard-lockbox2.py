@@ -1,6 +1,6 @@
 #hard-lockbox2.py
 from microbit import *
-import radio 
+import radio
 
 class Servo:
 
@@ -40,11 +40,11 @@ class Servo:
         us = self.min_us + total_range * degrees // self.angle
         self.write_us(us)
 #hard-lockbox2.py
-state = 1     
+state = 1
 radio_group = state #number of radio frequency to use
 radio.on()
 radio.config(power=7,channel=radio_group)
-position = 0
+position = 20
 Servo(pin16).write_angle(position)
 display.show(Image.NO)
 
@@ -55,16 +55,14 @@ while True:# do forever
         radio.config(channel = state)
     else:
         state = state+1
-        
+
     msg = radio.receive()
     if msg is "100110":
-        if position == 95:
-            position = 0
+        if position == 160:
+            position = 20
         else:
-            position = 95
+            position = 160
         Servo(pin16).write_angle(position)
         display.show(Image.HEART)
     else:
         display.show(Image.SAD)
-
-        

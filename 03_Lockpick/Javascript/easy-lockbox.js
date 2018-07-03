@@ -13,15 +13,15 @@ input.onButtonPressed(Button.B, () => {
 })
 radio.onDataPacketReceived(({ receivedString }) => {
     if (receivedString == "0101") {
-        if (position == 95) {
-            position = 5
+        if (position == 160) {
+            position = 20
         } else {
-            position = 95
+            position = 160
         }
         pins.servoWritePin(AnalogPin.P16, position)
     }
 })
 radio.setGroup(1)
-position = 5
+position = 20
 pins.digitalWritePin(DigitalPin.P16, position)
 basic.showIcon(IconNames.No)

@@ -1,3 +1,4 @@
+//NEED TO UPDATE
 let forward = 0
 let groupSet = 0
 let radioGroup = 0
@@ -23,7 +24,7 @@ input.onButtonPressed(Button.AB, () => {
 
         radio.setGroup(radioGroup)
         // Show a happy face on the display (IconNames.Happy)
-        
+
         // Set forward to zero
     } else {
         if (forward == 0) {
@@ -40,8 +41,8 @@ input.onButtonPressed(Button.AB, () => {
                 `)
         } else {
             // Send "stop" over radio
-            
-            
+
+
             // Set forward to zero
 
             basic.showLeds(`
@@ -60,7 +61,7 @@ input.onButtonPressed(Button.B, () => {
 
     } else {
         // Send "right" over radio
-        
+
         basic.showLeds(`
             . . # . .
             . . . # .

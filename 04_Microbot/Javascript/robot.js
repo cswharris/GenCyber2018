@@ -6,11 +6,6 @@ input.onButtonPressed(Button.AB, () => {
         radio.setGroup(radioGroup)
     }
 })
-input.onButtonPressed(Button.A, () => {
-    if (groupSet != 1 && radioGroup > 0) {
-        radioGroup = radioGroup - 1
-    }
-})
 radio.onDataPacketReceived( ({ receivedString: remoteString }) =>  {
     if (remoteString == "forward") {
         motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
@@ -23,20 +18,11 @@ radio.onDataPacketReceived( ({ receivedString: remoteString }) =>  {
             . . # . .
             `)
         basic.pause(200)
-    } else if (remoteString == "stop") {
         motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 0)
         motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 0)
-        basic.showLeds(`
-            . # # # .
-            # . . # #
-            # . # . #
-            # # . . #
-            . # # # .
-            `)
-        basic.pause(200)
     } else if (remoteString == "left") {
-        motobit.setMotorSpeed(Motor.Left, MotorDirection.Reverse, 100)
-        motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 100)
+        motobit.setMotorSpeed(Motor.Left, MotorDirection.Reverse, 50)
+        motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 50)
         basic.showLeds(`
             . . # . .
             . # . . .
@@ -45,9 +31,11 @@ radio.onDataPacketReceived( ({ receivedString: remoteString }) =>  {
             . . # . .
             `)
         basic.pause(200)
+        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 0)
+        motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 0)
     } else if (remoteString == "right") {
-        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
-        motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, 100)
+        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 50)
+        motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, 50)
         basic.showLeds(`
             . . # . .
             . . . # .
@@ -56,8 +44,15 @@ radio.onDataPacketReceived( ({ receivedString: remoteString }) =>  {
             . . # . .
             `)
         basic.pause(200)
+        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 0)
+        motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 0)
     } else {
-    	
+
+    }
+})
+input.onButtonPressed(Button.A, () => {
+    if (groupSet != 1 && radioGroup > 0) {
+        radioGroup = radioGroup - 1
     }
 })
 input.onButtonPressed(Button.B, () => {

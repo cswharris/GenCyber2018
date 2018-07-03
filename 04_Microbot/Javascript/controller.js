@@ -1,4 +1,3 @@
-let forward = 0
 let groupSet = 0
 let radioGroup = 0
 input.onButtonPressed(Button.A, () => {
@@ -20,29 +19,15 @@ input.onButtonPressed(Button.AB, () => {
         groupSet = 1
         radio.setGroup(radioGroup)
         basic.showIcon(IconNames.Happy)
-        forward = 0
     } else {
-        if (forward == 0) {
-            radio.sendString("forward")
-            forward = 1
-            basic.showLeds(`
-                . . # . .
-                . # # # .
-                # . # . #
-                . . # . .
-                . . # . .
-                `)
-        } else {
-            radio.sendString("stop")
-            forward = 0
-            basic.showLeds(`
-                . # # # .
-                # . . # #
-                # . # . #
-                # # . . #
-                . # # # .
-                `)
-        }
+        radio.sendString("forward")
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `)
     }
 })
 input.onButtonPressed(Button.B, () => {

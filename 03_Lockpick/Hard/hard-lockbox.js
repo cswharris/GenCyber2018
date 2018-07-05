@@ -1,5 +1,5 @@
 let position = 0
-let state = 0
+let state = 1
 radio.onDataPacketReceived( ({ receivedString }) =>  {
     if (receivedString == "100110") {
         if (position == 160) {
@@ -10,21 +10,19 @@ radio.onDataPacketReceived( ({ receivedString }) =>  {
         pins.servoWritePin(AnalogPin.P16, position)
         basic.showIcon(IconNames.Heart)
     } else {
-        state = 0
         basic.showIcon(IconNames.Sad)
     }
 })
-state = 1
-radio.setGroup(1)
+radio.setGroup(state)
 position = 20
 pins.digitalWritePin(DigitalPin.P16, position)
 basic.showIcon(IconNames.No)
 basic.forever(() => {
-    basic.pause(15000)
+    basic.pause(10000)
     if (state == 99) {
-        radio.setGroup(1)
+        state=0
     } else {
         state = state + 1
-        radio.setGroup(state)
     }
+    radio.setGroup(state)
 })

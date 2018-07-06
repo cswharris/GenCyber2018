@@ -1,5 +1,5 @@
 let state = 0
-let position = 0
+let position = 20
 radio.onDataPacketReceived( ({ receivedString }) =>  {
     if (state == 0) {
         if (receivedString == "0101") {
@@ -28,6 +28,5 @@ radio.onDataPacketReceived( ({ receivedString }) =>  {
     }
 })
 radio.setGroup(2)
-position = 20
 pins.digitalWritePin(DigitalPin.P16, position)
 basic.showIcon(IconNames.No)

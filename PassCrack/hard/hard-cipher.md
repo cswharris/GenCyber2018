@@ -11,4 +11,4 @@ Here's what we know:
 
 - See if you can make any sense of these symbols, we found them by their computer
 
-![symbols](symbols.JPG)
+![symbols](symbol.JPG)
